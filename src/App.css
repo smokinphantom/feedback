@@ -11,6 +11,10 @@ body {
   width: 0;
 }
 
+.radio-group input[type="radio"]:checked + label{
+  background-color: #C6D3D9
+}
+
 .radio-group label:hover {
   background-color: #C6D3D9;
 }
@@ -27,8 +31,12 @@ body {
     border-radius: 4px;
 }
 
+.radio-inline {
+  margin : 5px;
+}
+
 .radio-group {
-  margin: 13px;
+  margin: 13px 13px 5px 13px;
 }
 
 #wrapper {
@@ -38,4 +46,14 @@ body {
 
 .color-button {
   background: #C6D3D9
+}
+
+.left {
+  float: left;
+  font-size: 10px;
+}
+
+.right {
+  float: right;
+  font-size: 10px;
 }

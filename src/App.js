@@ -13,13 +13,16 @@ class App extends Component {
       currentStep: 1,
       category: "",
       category1: "",
-      feedback: ""
+      feedback: "",
+      rating: "",
+      goal: "",
+      didSubmit: false
     }
   }
 
   submitHandler = event => {
     event.preventDefault()
-    //handle the submit button here
+    this.setState({ didSubmit: true })
   }
 
   next = () => {
@@ -51,10 +54,10 @@ class App extends Component {
         <h1>COLE HAAN</h1>
 
         <form onSubmit={this.submitHandler}>
-          <Question1 currentStep={this.state.currentStep} handleChange={this.handleChange} />
+          <Question1 currentStep={this.state.currentStep} handleChange={this.handleChange} rating={this.state.rating} />
           <Question2 currentStep={this.state.currentStep} handleChange={this.handleChange} category={this.state.category} />
           <Question3 currentStep={this.state.currentStep} handleChange={this.handleChange} category1={this.state.category1} />
-          <Question4 currentStep={this.state.currentStep} handleChange={this.handleChange} />
+          <Question4 currentStep={this.state.currentStep} handleChange={this.handleChange} goal={this.state.goal} />
           <Question5 currentStep={this.state.currentStep} handleChange={this.handleChange} feedback={this.state.feedback} />
 
 
@@ -74,12 +77,19 @@ class App extends Component {
             style={{ "float": "right" }}>
             Next
         </button>
-
+          <div id="wrapper">
+            <button className="btn color-button">Submit</button>
+          </div>
         </form>
 
-        <div id="wrapper">
-          <button className="btn color-button">Submit</button>
-        </div>
+        {this.state.didSubmit ? (<div>
+          <h3>Feedback results</h3>
+          <p>rating: {this.state.rating}</p>
+          <p>category: {this.state.category}</p>
+          <p>goal: {this.state.category1}</p>
+          <p>ease of goal: {this.state.goal}</p>
+          <p>feedback: {this.state.feedback}</p>
+        </div>) : null}
 
       </React.Fragment>
     );
