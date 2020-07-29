@@ -11,8 +11,8 @@ class App extends Component {
     super(props)
     this.state = {
       currentStep: 1,
-      category: "",
-      category1: "",
+      category: "website",
+      category1: "new_arrivals",
       feedback: "",
       rating: "",
       goal: "",
@@ -48,11 +48,25 @@ class App extends Component {
     })
   }
 
+  restartSurvey = (event) => {
+    event.preventDefault()
+    this.setState({
+      currentStep: 1,
+      category: "website",
+      category1: "new_arrivals",
+      feedback: "",
+      rating: "",
+      goal: "",
+      didSubmit: false
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
-        <h1>COLE HAAN</h1>
-
+        <div>
+          <img className="ch_logo" src="https://fb-logo.userty.com/2760abac5cf96eb1db1b748a7997e40c/1560884648848.png" alt="Cole Haan" />
+        </div>
         <form onSubmit={this.submitHandler}>
           <Question1 currentStep={this.state.currentStep} handleChange={this.handleChange} rating={this.state.rating} />
           <Question2 currentStep={this.state.currentStep} handleChange={this.handleChange} category={this.state.category} />
@@ -79,6 +93,11 @@ class App extends Component {
         </button>
           <div id="wrapper">
             <button className="btn color-button">Submit</button>
+            <button onClick={this.restartSurvey} style={{ "marginLeft": "10px" }} className="btn color-button">Restart survey</button>
+            <a className="logo" href="https://www.auryc.com/" title="Powered by Auryc" target="_blank" tabIndex="0">
+              <span aria-hidden="true">Powered by</span>
+              <img aria-hidden="true" src="https://fb-logo.auryc.com/dark-logo.svg" alt="Auryc" style={{ "width": "60px", "height": "20px" }} />
+            </a>
           </div>
         </form>
 

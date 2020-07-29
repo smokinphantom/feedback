@@ -5,8 +5,11 @@ const Question5 = (props) => {
 
         return (
             <div className="form-group">
-                <label htmlFor="feedback">Please share your feedabck</label>
-                <textarea class="form-control" rows="5" id="feedback" name="feedback" value={props.feedback} onChange={props.handleChange} />
+                <label htmlFor="feedback">Please share your feedback.</label>
+                <textarea placeholder="Your answer" className="form-control" rows="5" id="feedback" name="feedback" value={props.feedback} onChange={props.handleChange} />
+                <div style={{ "display": "flow-root" }}>
+                    <div className="right">1000 characters left</div>
+                </div>
             </div>
         );
     } else

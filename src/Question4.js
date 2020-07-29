@@ -2,18 +2,22 @@ import React from "react"
 
 const Question4 = (props) => {
     if (props.currentStep === 4) {
+        const values = [{ name: "v_difficult", value: "Very Difficult" },
+        { name: "difficult", value: "Difficult" },
+        { name: "medium", value: "Not difficult nor Easy" },
+        { name: "easy", value: "Easy" },
+        { name: "v_easy", value: "Very Easy" }]
+
+        const inputs = values.map((obj, index) => {
+
+            return (<div key={"goal" + index} className="radio">
+                <label><input onChange={props.handleChange} type="radio" name="goal" value={obj.name} checked={props.goal === obj.name} />{obj.value}</label>
+            </div>)
+        })
         return (
-            <div className="form-group" onChange={props.handleChange}>
+            <div className="form-group">
                 <span>How easy was it to accomplish that goal?</span>
-                <div class="radio">
-                    <label><input type="radio" name="goal" value="v_difficult" checked={props.goal === "v_difficult"} />Very difficult</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="goal" value="difficult" checked={props.goal === "difficult"} />Difficult</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="goal" value="medium" checked={props.goal === "medium"} />Not difficult nor easy</label>
-                </div>
+                {inputs}
             </div>
         );
     } else
